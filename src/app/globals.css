@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* basezinha */
+html, body { height: 100%; }
+body { @apply bg-slate-50 text-slate-900 antialiased; }
+main { margin-top: 0; padding-top: 0; }
+
+@layer components {
+  /* Tipografia utilitária */
+  .heading-1 { @apply text-xl md:text-2xl font-semibold tracking-tight; }
+  .heading-2 { @apply text-base md:text-lg font-semibold; }
+  .muted     { @apply text-sm text-slate-500; }
+
+  /* Cards/tiles com altura coerente */
+  .tile {
+    @apply w-full rounded-2xl border border-slate-200/80 bg-white
+           p-5 md:p-6
+           min-h-[120px] sm:min-h-[132px] md:min-h-[144px]
+           flex flex-col items-center justify-center gap-2
+           shadow-sm transition-transform duration-200 ease-out;
+  }
+  .tile:hover         { @apply -translate-y-0.5 shadow-md bg-violet-50/40; }
+  .tile:focus-visible { @apply outline-none ring-2 ring-violet-300; }
+
+  /* Botões */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-xl px-3 py-2
+           border border-slate-200 bg-white text-slate-700
+           shadow-sm transition-shadow hover:shadow-md;
+  }
+  .btn-primary { @apply border-transparent bg-violet-600 text-white hover:bg-violet-700; }
+
+  /* Drawer lateral (quando abrir pelo hambúrguer) */
+  .sidebar {
+    @apply w-64 shrink-0 border-r border-slate-200 bg-white/90 backdrop-blur
+           p-4 flex flex-col gap-4;
+    background-image: linear-gradient(to bottom, rgba(124,58,237,0.06), transparent);
+  }
+  .nav-item        { @apply flex items-center gap-3 rounded-xl px-3 py-2 text-slate-700 hover:bg-slate-100 transition-colors; }
+  .nav-item.active { @apply bg-violet-50 text-violet-700 font-medium; }
+
+  /* CONTAINER CENTRAL + espaçamentos menores no topo */
+  .page-container {
+    @apply mx-auto w-full max-w-7xl    /* << mais largo no desktop */
+           px-4 sm:px-6 lg:px-8
+           pt-0 md:pt-0 pb-6 md:pb-8;  /* sem padding no topo */
+  }
+
+  /* Grade (só gap aqui; as colunas ficam no componente p/ usar auto-fit) */
+  .card-grid {
+    @apply gap-4 md:gap-5 mt-0;
+  }
+}
